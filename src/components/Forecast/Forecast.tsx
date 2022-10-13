@@ -1,7 +1,15 @@
 import { Group, Text, SegmentedControl, Paper } from '@mantine/core'
 import ForecastCard from './ForecastCard'
 
-const Forecast = ({ data, interval, setInterval }) => {
+const Forecast = ({
+  data,
+  interval,
+  setInterval,
+}: {
+  data: any
+  interval: string
+  setInterval: () => void
+}) => {
   return (
     <>
       <Group position="apart" sx={{ width: '100%' }}>
@@ -20,7 +28,7 @@ const Forecast = ({ data, interval, setInterval }) => {
       {data?.DailyForecasts && (
         <Group position="center">
           {data.DailyForecasts.map((c: Record<string, any>) => (
-            <ForecastCard ident={c.EpochDate} forecast={c} />
+            <ForecastCard key={c.EpochDate} ident={c.EpochDate} forecast={c} />
           ))}
         </Group>
       )}
